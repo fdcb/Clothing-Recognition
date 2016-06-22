@@ -8,7 +8,7 @@ function [ points ] = find_outermostPoints(x, y)
 
 	points(1, :) = {maxX, y(iMaxX), 'r', iMaxX};
 	points(2, :) = {minX, y(iMinX), 'l', iMinX};
-	points(3, :) = {maxY, y(iMaxY), 'd', iMaxY};
-	points(4, :) = {minY, y(iMinY), 'u', iMinY};
+	points(3, :) = {x(iMaxY), maxY, 'd', iMaxY};
+	points(4, :) = {x(iMinY), minY, 'u', iMinY};
 
 end
