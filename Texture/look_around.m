@@ -3,14 +3,12 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 	cordY = y;
 
 	color = im((x + 1), y, :);
-disp(x+1)
+
 	if color(1) ~= 0 || color(2) ~= 0 || color(3) ~= 0
 		return;
 	end
 
 	color = im((x + 1), (y + 1), :);
-	disp(x+1)
-	disp(y+1)
 	if color(1) ~= 0 || color(2) ~= 0 || color(3) ~= 0
 		return;
 	end
