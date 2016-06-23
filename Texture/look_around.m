@@ -56,16 +56,16 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 			end
 			[cordX, cordY] = look_around(x, (y - 2), im, spot);
 		case 'u'
-			color = im(y, (x - 2), :);
-			if color(1) ~= 0 || color(2) ~= 0 || color(3) ~= 0
-				return;
-			end
-			[cordX, cordY] = look_around((x - 2), y, im, spot);
-		case 'd'
 			color = im(y, (x + 2), :);
 			if color(1) ~= 0 || color(2) ~= 0 || color(3) ~= 0
 				return;
 			end
 			[cordX, cordY] = look_around((x + 2), y, im, spot);
+		case 'd'
+			color = im(y, (x - 2), :);
+			if color(1) ~= 0 || color(2) ~= 0 || color(3) ~= 0
+				return;
+			end
+			[cordX, cordY] = look_around((x - 2), y, im, spot);
 	end
 end
