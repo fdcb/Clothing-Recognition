@@ -6,7 +6,7 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 	if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
 		return;
 	end
-	
+
 	color = im((y + 1), x, :);
 	if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
 		return;

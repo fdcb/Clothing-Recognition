@@ -34,10 +34,10 @@ function [ polygon, x, y ] =  showboxes(im, boxes, partcolor, partidentifier)
 				end
 			end
 		end
+		
 		hold on;
-plot(x , y, 'yo');
+		plot(x , y, 'yo');
 		[x, y] = select_points(x, y, im);
-
 		k = convhull(x, y);
 		plot(x(k), y(k), 'p-', x, y, dots);
 		hold off;
