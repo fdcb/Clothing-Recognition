@@ -40,7 +40,7 @@ plot(x , y, 'y.');
 		[x ,y] = select_points(x, y, im);
 
 		k = convhull(x, y);
-		plot(x(k), y(k), 'p-', x, y, dots);
+		% plot(x(k), y(k), 'p-', x, y, dots);
 		hold off;
 
 		polygon = k;
