@@ -12,10 +12,10 @@ disp(length(points))
 		if color(1) == 0 && color(2) == 0 && color(3) == 0
 			disp(11111)
 			[newX, newY] = look_around(cordX, cordY, im, spot);
-			disp(newx)
-			disp(newy)
-			disp(cordx)
-			disp(cordy)
+			disp(newX)
+			disp(newY)
+			disp(cordX)
+			disp(cordY)
 			if newX ~= cordX || newY ~= cordY
 				x(index) = cordX;
 				y(index) = cordY;
