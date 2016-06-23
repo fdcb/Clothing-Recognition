@@ -15,7 +15,7 @@ function [ x, y ] = select_points(x, y, im)
 			y(index) = newY;
 		end
 	end
-	if tempX ~= x || tempY ~= y
+	if ~isequal(tempX, x) || ~isequal(tempY ,y)
 		[x, y] = select_points(x, y, im);
 	end
 end
