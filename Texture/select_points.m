@@ -2,9 +2,7 @@ function [ x, y ] = select_points(x, y, im)
 	points = find_outermostPoints(x, y);
 disp(points)
 disp(232323)
-
-	disp(x)
-	disp(y)
+disp(length(points))
 	for i = 1 : length(points)
 		cordX = round(cell2float(points(i, 1)));
 		cordY = round(cell2float(points(i, 2)));
@@ -24,6 +22,4 @@ disp(232323)
 			end
 		end
 	end
-	disp(x)
-	disp(y)
 end
