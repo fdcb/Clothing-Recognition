@@ -11,10 +11,11 @@ disp(points)
 		if color(1) == 0 && color(2) == 0 && color(3) == 0
 			disp(0)
 			[newX, newY] = look_around(cordX, cordY, im, spot);
-		plot(cordX, cordY, 'm+');
+			color = im(newY, newX, :);
+		plot(newX, newY, 'm+');
 			if newX ~= cordX || newY ~= cordY
-				x(index) = cordX;
-				y(index) = cordY;
+				x(index) = newX;
+				y(index) = newY;
 			end
 		end
 	end
