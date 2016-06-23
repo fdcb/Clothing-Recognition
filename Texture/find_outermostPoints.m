@@ -1,6 +1,7 @@
 function [ points ] = find_outermostPoints(x, y)
 	points = cell(8, 4);
-
+	disp(x)
+	disp(y)
 	[maxX, iMaxX] = max(x);
 	[minX, iMinX] = min(x);
 	[minY, iMinY] = min(y);
@@ -16,6 +17,8 @@ function [ points ] = find_outermostPoints(x, y)
 	y(iMaxY) = [];
 	y(iMinY) = [];
 
+	disp(x)
+	disp(y)
 	[maxX, iMaxX] = max(x);
 	[minX, iMinX] = min(x);
 	[minY, iMinY] = min(y);
