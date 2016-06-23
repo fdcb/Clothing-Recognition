@@ -35,7 +35,7 @@ function [ polygon, x, y ] =  showboxes(im, boxes, partcolor, partidentifier)
 				end
 			end
 		end
-
+plot(x , y, 'y.');
 		[x ,y] = select_points(x, y, im);
 
 		k = convhull(x, y);
