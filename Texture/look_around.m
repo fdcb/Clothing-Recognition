@@ -38,7 +38,7 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 	end
 
 	color = im(y, (x + 1), :);
-	if color(1: ~= 0 || color(2) ~= 0 || color(3) ~= 0
+	if color(1) ~= 0 || color(2) ~= 0 || color(3) ~= 0
 		return;
 	end
 
