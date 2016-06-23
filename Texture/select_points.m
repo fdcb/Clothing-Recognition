@@ -1,6 +1,8 @@
 function [ x, y ] = select_points(x, y, im)
 	points = find_outermostPoints(x, y);
 
+points
+
 	disp(x)
 	disp(y)
 	for i = 1 : length(points)
@@ -8,9 +10,10 @@ function [ x, y ] = select_points(x, y, im)
 		cordY = round(cell2float(points(i, 2)));
 		spot = char(points(i, 3));
 		index = cell2mat(points(i, 4));
-
+i
 		color = im(cordY, cordX, :);
 		if color(1) == 0 && color(2) == 0 && color(3) == 0
+			disp(11111)
 			[newX, newY] = look_around(cordX, cordY, im, spot);
 			disp(newx)
 			disp(newy)
