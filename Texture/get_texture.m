@@ -32,7 +32,7 @@ load('PARSE_model');
 	colorset = {'g', 'g', 'y', 'm', 'm', 'm', 'm', 'y', 'y', 'y', 'r', 'r', 'r', ...
 		'r', 'y', 'c', 'c', 'c', 'c', 'y', 'y', 'y', 'b', 'b', 'b', 'b'};
 numparts = length(colorset);
- i = 5;
+
 for i = 1 : length(imageList)
 	for j = 1 : length(bodyParts)
 		im = imread(strcat(curDir, imageList(i).name));
