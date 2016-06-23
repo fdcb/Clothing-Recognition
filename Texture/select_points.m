@@ -12,6 +12,10 @@ function [ x, y ] = select_points(x, y, im)
 		color = im(cordY, cordX, :);
 		if color(1) == 0 && color(2) == 0 && color(3) == 0
 			[newX, newY] = look_around(cordX, cordY, im, spot);
+			newX
+			newY
+			cordX
+			cordY
 			if newX ~= cordX || newY ~= cordY
 				x(index) = cordX;
 				y(index) = cordY;
