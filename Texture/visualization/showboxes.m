@@ -1,5 +1,4 @@
 function [ polygon, x, y ] =  showboxes(im, boxes, partcolor, partidentifier)
-
 		imagesc(im); axis image; axis off;
 		if ~isempty(boxes)
 		numparts = length(partcolor);
@@ -40,7 +39,7 @@ plot(x , y, 'y.');
 		[x ,y] = select_points(x, y, im);
 
 		k = convhull(x, y);
-		% plot(x(k), y(k), 'p-', x, y, dots);
+		plot(x(k), y(k), 'p-', x, y, dots);
 		hold off;
 
 		polygon = k;
