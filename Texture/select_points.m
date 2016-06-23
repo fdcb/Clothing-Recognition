@@ -7,6 +7,7 @@ disp(length(points))
 		cordY = round(cell2float(points(i, 2)));
 		spot = char(points(i, 3));
 		index = cell2mat(points(i, 4));
+		plot(cordX, cordY, 'c+');
 disp(232323)
 		color = im(cordY, cordX, :);
 		if color(1) == 0 && color(2) == 0 && color(3) == 0
