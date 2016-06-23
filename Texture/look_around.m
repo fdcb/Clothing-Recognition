@@ -28,6 +28,7 @@ disp(5)
 
 	color = im((y - 1), (x - 1), :);
 	if color(1) ~= 0 || color(2) ~= 0 || color(3) ~= 0
+		disp(color)
 disp(6)	
 		return;
 	end
