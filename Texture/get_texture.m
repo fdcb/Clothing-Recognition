@@ -1,7 +1,7 @@
 dirM = 'Frames_Male/';
 dirF = 'Frames_Female/';
 
-bodyparts = {'y', 'r', 'm', 'c', 'b'};
+bodyParts = {'y', 'r', 'm', 'c', 'b'};
 
 cd('mpeg7fex_win32_v2');
 rmdir('RightArm/', 's');
@@ -34,7 +34,7 @@ load('PARSE_model');
 numparts = length(colorset);
  i = 5;
 % for i = 1 : length(imageList)
-	% for j = 1 : length(bodyparts)
+	% for j = 1 : length(bodyParts)
 		im = imread(strcat(curDir, imageList(i).name));
 		boxes = detect_fast(im, model, min(model.thresh, -1));
 		boxes = nms(boxes, .1);
@@ -42,7 +42,7 @@ numparts = length(colorset);
 			imagesc(im);
 			axis image;
 			axis off;
-			% [k, x, y] = showboxes(im, boxes(1, :), colorset, bodyparts{j});
+			% [k, x, y] = showboxes(im, boxes(1, :), colorset, bodyParts{j});
 			[k, x, y] = showboxes(im, boxes(1, :), colorset, 'r');
 
 			[axisx, axisy, z] = size(im);
@@ -56,7 +56,7 @@ numparts = length(colorset);
 
 			cd('mpeg7fex_win32_v2');
 
-			% switch bodyparts{j}
+			% switch bodyParts{j}
 			% 	case 'y'
 			% 		cd('Body');
 			% 	case 'm'
@@ -76,15 +76,14 @@ numparts = length(colorset);
 			fprintf(f, '%s\n', imageList(i).name);
 			fclose(f);
 
-
 			cd('../..');
 		end
 	% end
 % end
 
 cd('mpeg7fex_win32_v2');
-for i = 1 : length(bodyparts)
-	switch bodyparts{i}
+for i = 1 : length(bodyParts)
+	switch bodyParts{i}
 		case 'y'
 			cd('Body');
 		case 'm'
