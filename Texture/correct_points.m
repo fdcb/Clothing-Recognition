@@ -10,13 +10,13 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY)
 
 	switch spot
 		case 'd'
-			[x, y] = fix_points((oldX - 2), oldY, (oldX - 3), oldY);
+			[x, y] = fix_points((oldX - 3), oldY, (oldX - 4), oldY);
 		case 'u'
-			[x, y] = fix_points((oldX + 2), oldY, (oldX + 3), oldY);
+			[x, y] = fix_points((oldX + 3), oldY, (oldX + 4), oldY);
 		case 'l'
-			[x, y] = fix_points(oldX, (oldY - 2), oldX, (oldY - 3));
+			[x, y] = fix_points(oldX, (oldY - 3), oldX, (oldY - 4));
 		case 'r'
-			[x, y] = fix_points(oldX, (oldY + 2), oldX, (oldY + 3));
+			[x, y] = fix_points(oldX, (oldY + 3), oldX, (oldY + 4));
 
 			% color = im(oldY, (oldX + 2), :);
 			% if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
@@ -39,7 +39,7 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY)
 		if x == oldX && y == oldY
 			return;
 		end
-		[x, y] = correct_points(x, y, spot, 
+		[x, y] = correct_points(x, y, im, spot, cordX, cordY);
 	end
 
 end
