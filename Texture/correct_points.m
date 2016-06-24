@@ -32,13 +32,14 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY)
 	function [ x, y ] = fix_Points(cordX, cordY, cordX1, cordY1)
 		color = im(cordY, cordX, :);
 		if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
-			[x , y] = correct_points(cordX1, cordY1, spot, oldX, oldY));
+			[x , y] = correct_points(cordX1, cordY1, im, spot, oldX, oldY));
 			return;
 		end
 		[x, y] = look_around(cordX, cordY, im, spot);
 		if x == oldX && y == oldY
 			return;
 		end
+		[x, y] = correct_points(x, y, spot, 
 	end
 
 end
