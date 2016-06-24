@@ -9,6 +9,8 @@ function [ x, y ] = select_points(x, y, im)
 		index = cell2mat(points(i, 4));
 
 		[newX, newY] = look_around(cordX, cordY, im, spot);
+		[newX, newY] = correct_points(newX, newY, im, spot, cordX, cordY);
+
 		if newX ~= cordX || newY ~= cordY
 			x(index) = newX;
 			y(index) = newY;
