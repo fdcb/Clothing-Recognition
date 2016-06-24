@@ -2,7 +2,7 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 	cordX = x;
 	cordY = y;
 	[h, w, d] = size(im);
-	
+
 	if (cordX <= 1) || (cordX >= w) || (cordY <= 1) || (cordY >= h)
 		return;
 	end
