@@ -7,7 +7,6 @@ function [ x, y ] = select_points(x, y, im)
 		cordY = round(cell2float(points(i, 2)));
 		spot = char(points(i, 3));
 		index = cell2mat(points(i, 4));
-		color = im(cordY, cordX, :);
 
 		[newX, newY] = look_around(cordX, cordY, im, spot);
 		if newX ~= cordX || newY ~= cordY

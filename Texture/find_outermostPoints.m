@@ -1,5 +1,5 @@
 function [ points ] = find_outermostPoints(x, y)
-	points = cell(, 4);
+	points = cell(4, 4);
 
 	[maxX, iMaxX] = max(x);
 	[minX, iMinX] = min(x);
