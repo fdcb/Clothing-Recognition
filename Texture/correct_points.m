@@ -1,7 +1,6 @@
-function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY)
+function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY, local)
 	[h, w, d] = size(im);
 	color = im(y, x, :);
-	local = locate_points(x, y, im);
 
 	if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
 		if (x > 1) && (x < w) && (y > 1) && (y < h)
@@ -26,14 +25,15 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY)
 	function [ x, y ] = fix_points(cordX, cordY, cordX1, cordY1)
 		color = im(cordY, cordX, :);
 		if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
-			[x , y] = correct_points(cordX1, cordY1, im, spot, oldX, oldY);
+			[x , y] = correct_points(cordX1, cordY1, im, spot, ...
+					oldX, oldY, local);
 			return;
 		end
 		[x, y] = look_around(cordX, cordY, im, spot);
 		if x == oldX && y == oldY
 			return;
 		end
-		[x, y] = correct_points(x, y, im, spot, cordX, cordY);
+		[x, y] = correct_points(x, y, im, spot, cordX, cordY, local);
 	end
 end
 
