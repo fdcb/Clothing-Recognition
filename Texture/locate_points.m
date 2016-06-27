@@ -1,4 +1,4 @@
-function [ location ] = select_points(x, y, im)
+function [ location ] = locate_points(x, y, im)
 	[h, w, d] = size(im);
 	location = '';
 

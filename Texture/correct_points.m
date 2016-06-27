@@ -23,7 +23,7 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY)
 		end
 	end
 
-	function [ x, y ] = fix_Points(cordX, cordY, cordX1, cordY1)
+	function [ x, y ] = fix_points(cordX, cordY, cordX1, cordY1)
 		color = im(cordY, cordX, :);
 		if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
 			[x , y] = correct_points(cordX1, cordY1, im, spot, oldX, oldY);
