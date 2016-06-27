@@ -1,10 +1,11 @@
 function [ cordX, cordY ] = look_around(x, y, im, spot)
-	if (x <= 1) || (x >= w) || (y <= 1) || (y >= h)
-		return;
-	end
 	cordX = x;
 	cordY = y;
 	[h, w, d] = size(im);
+
+	if (x <= 1) || (x >= w) || (y <= 1) || (y >= h)
+		return;
+	end
 
 	check_color(x, y);
 	check_color(x, (y + 1));
@@ -18,13 +19,21 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 
 	switch spot
 		case 'l'
-			[cordX, cordY] = look_around((x + 2), y, im, spot);
+			if (x + 2) < w
+				[cordX, cordY] = look_around((x + 2), y, im, spot);
+			end
 		case 'r'
-			[cordX, cordY] = look_around((x - 2), y, im, spot);
+			if (x - 2) > 0
+				[cordX, cordY] = look_around((x - 2), y, im, spot);
+			end
 		case 'u'
-			[cordX, cordY] = look_around(x, (y + 2), im, spot);
+			if (y + 2) < h
+				[cordX, cordY] = look_around(x, (y + 2), im, spot);
+			end
 		case 'd'
-			[cordX, cordY] = look_around(x, (y - 2), im, spot);
+			if (y - 2) > 0
+				[cordX, cordY] = look_around(x, (y - 2), im, spot);
+			end
 	end
 
 	function check_color(curX, curY)
