@@ -1,11 +1,10 @@
 function [ cordX, cordY ] = look_around(x, y, im, spot)
+	if (x <= 1) || (x >= w) || (y <= 1) || (y >= h)
+		return;
+	end
 	cordX = x;
 	cordY = y;
 	[h, w, d] = size(im);
-
-	if (cordX <= 1) || (cordX >= w) || (cordY <= 1) || (cordY >= h)
-		return;
-	end
 
 	check_color(x, y);
 	check_color(x, (y + 1));
