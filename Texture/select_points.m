@@ -9,10 +9,12 @@ function [ x, y ] = select_points(x, y, im)
 		index = cell2mat(points(i, 4));
 
 		[newX, newY] = look_around(cordX, cordY, im, spot);
+		disp('alooo')
 		local = locate_points(newX, newY, im);
+		disp('located')
 		[newX, newY] = correct_points(newX, newY, im, spot, ...
 				cordX, cordY, local);
-
+		disp('corrected')
 		if newX ~= cordX || newY ~= cordY
 			x(index) = newX;
 			y(index) = newY;
