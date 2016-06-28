@@ -7,9 +7,15 @@ function [ x, y ] = select_points(x, y, im)
 		cordY = round(cell2float(points(i, 2)));
 		spot = char(points(i, 3));
 		index = cell2mat(points(i, 4));
-
+        
+newX = cordX;
+newY = cordY;
+color = im(newY, newX, :);
+disp(color)
 		[newX, newY] = look_around(cordX, cordY, im, spot);
 		disp('alooo')
+        color = im(newY, newX, :);
+disp(color)
 		local = locate_points(newX, newY, im);
 		disp('located')
 		[newX, newY] = correct_points(newX, newY, im, spot, ...
