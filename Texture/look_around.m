@@ -3,56 +3,38 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 	cordY = y;
 	[h, w, d] = size(im);
 
-    if ((x - 1) <= 1) || ((x + 1) >= w) || ((y - 1) <= 1) || ((y + 1) >= h)
-		STOP=1;
-        plot(x, y, 'gd');
+	if curX > w || curX < 1 || curY > h || curY < 1
+		cordX = x;
+		cordY = y;
         return;
     end
 
     if check_color(x,y);
-        cordX=x;
-        cordY=y;
 		return;
 	end
 
 	if check_color(x, (y + 1))
-        cordX=x;
-        cordY=y+1;
 		return;
 	end
 	if check_color((x + 1), (y + 1))
-        cordX=x+1;
-        cordY=y+1;
 		return;
 	end
 	if check_color((x + 1), (y - 1))
-        cordX=x+1;
-        cordY=y-1;
 		return;
 	end
 	if check_color((x - 1), (y - 1))
-        cordX=x-1;
-        cordY=y-1;
 		return;
 	end
 	if check_color((x - 1), (y + 1))
-        cordX=x-1;
-        cordY=y+1;
 		return;
 	end
 	if check_color(x, (y - 1))
-        cordX=x;
-        cordY=y-1;
 		return;
 	end
 	if check_color((x - 1), y)
-        cordX=x-1;
-        cordY=y;
 		return;
 	end
 	if check_color((x + 1), y)
-        cordX=x+1;
-        cordY=y;
 		return;
 	end
 
@@ -81,9 +63,15 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 	end
 
 	function b = check_color(curX, curY)
+		if curX > w || curX < 1 || curY > h || curY < 1
+			b = false;
+			return;
+		end
 		color = im(curY, curX, :);
 		if color(1) >= 25 || color(2) >= 25 || color(3) >= 25
 			b = true;
+			cordX = curX;
+			cordY = curY;
 			return;
 		end
 		b = false;
