@@ -6,14 +6,11 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
     if ((x - 1) <= 1) || ((x + 1) >= w) || ((y - 1) <= 1) || ((y + 1) >= h)
 		return;
     end
-    
-    b = check_color(x,y);
-    disp(b)
-    if b
+
+    if check_color(x,y);
 		return;
-    end
-    
-    disp(1)
+	end
+
 	if check_color(x, (y + 1))
 		return;
 	end
@@ -60,9 +57,9 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 
 	function b = check_color(curX, curY)
 		color = im(curY, curX, :);
-		if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
+		if color(1) >= 25 || color(2) >= 25 || color(3) >= 25
 			b = true;
-            return;
+			return;
 		end
 		b = false;
 	end

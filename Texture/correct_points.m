@@ -2,7 +2,7 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY, local)
 	[h, w, d] = size(im);
 	color = im(y, x, :);
 
-	if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
+	if color(1) >= 25 || color(2) >= 25 || color(3) >= 25
 		if (x > 1) && (x < w) && (y > 1) && (y < h)
 			return;
 		end
@@ -32,7 +32,7 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY, local)
 
 	function [ x, y ] = fix_points(cordX, cordY, cordX1, cordY1)
 		color = im(cordY, cordX, :);
-		if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
+		if color(1) >= 25 || color(2) >= 25 || color(3) >= 25
 			x = cordX;
 			y = cordY;
 			return;
