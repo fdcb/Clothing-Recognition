@@ -40,24 +40,24 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 	switch spot
 		case 'l'
 			plot((x+3), y, 'md');
-			% if (x + 3) < w
-			% 	[cordX, cordY] = look_around((x + 3), y, im, spot);
-			% end
+			if (x + 3) < w
+				[cordX, cordY] = look_around((x + 3), y, im, spot);
+			end
 		case 'r'
 			plot((x-3), y, 'md');
-			% if (x - 3) > 0
-			% 	[cordX, cordY] = look_around((x - 3), y, im, spot);
-			% end
+			if (x - 3) > 0
+				[cordX, cordY] = look_around((x - 3), y, im, spot);
+			end
 		case 'u'
 			plot(x, (y + 3), 'md');
-			% if (y + 3) < h
-			% 	[cordX, cordY] = look_around(x, (y + 3), im, spot);
-			% end
+			if (y + 3) < h
+				[cordX, cordY] = look_around(x, (y + 3), im, spot);
+			end
 		case 'd'
 			plot(x, (y - 3), 'md');
-			% if (y - 3) > 0
-			% 	[cordX, cordY] = look_around(x, (y - 3), im, spot);
-			% end
+			if (y - 3) > 0
+				[cordX, cordY] = look_around(x, (y - 3), im, spot);
+			end
 	end
 
 	function b = check_color(curX, curY)

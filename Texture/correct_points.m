@@ -12,26 +12,26 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY, local)
 	if strcmp(spot, 'd') || strcmp(spot, 'u')
 		if strcmp(local, 'br') || strcmp(local, 'tr')
 			if (oldX - 3) > 0
-				[x, y] = fix_points((oldX - 3), oldY, (oldX - 4), oldY);
+				[x, y] = fix_points((oldX - 3), oldY);
 			end
 		else %bl or tl
 			if (oldX + 3) < w
-				[x, y] = fix_points((oldX + 3), oldY, (oldX + 4), oldY);
+				[x, y] = fix_points((oldX + 3), oldY);
 			end
 		end
 	else % l or r
 		if strcmp(local, 'br') || strcmp(local, 'bl')
 			if (oldY - 3) > 0
-				[x, y] = fix_points(oldX, (oldY - 3), oldX, (oldY - 4));
+				[x, y] = fix_points(oldX, (oldY - 3));
 			end
 		else %tl or tr
 			if (oldY + 3) < h
-				[x, y] = fix_points(oldX, (oldY + 3), oldX, (oldY + 4));
+				[x, y] = fix_points(oldX, (oldY + 3));
 			end
 		end
 	end
 
-	function [ x, y ] = fix_points(cordX, cordY, cordX1, cordY1)
+	function [ x, y ] = fix_points(cordX, cordY)
 		color = im(cordY, cordX, :);
 		if color(1) >= 25 || color(2) >= 25 || color(3) >= 25
 			x = cordX;
