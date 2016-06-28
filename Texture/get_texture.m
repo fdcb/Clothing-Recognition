@@ -33,10 +33,11 @@ load('PARSE_model');
 		'r', 'y', 'c', 'c', 'c', 'c', 'y', 'y', 'y', 'b', 'b', 'b', 'b'};
 numparts = length(colorset);
 
-%for i = 1 : length(imageList)
-%	for j = 1 : length(bodyParts)
-i = 1;
-j =4;
+for i = 17 : length(imageList)
+	for j = 4 : length(bodyParts)
+%i = 400;
+%j = 1;
+i
 im = imread(strcat(curDir, imageList(i).name));
 		boxes = detect_fast(im, model, min(model.thresh, -1));
 		boxes = nms(boxes, .1);
@@ -80,8 +81,8 @@ im = imread(strcat(curDir, imageList(i).name));
 
 			cd('../..');
 		end
-%	end
-%end
+	end
+end
 
 cd('mpeg7fex_win32_v2');
 for i = 1 : length(bodyParts)

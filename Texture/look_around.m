@@ -4,39 +4,59 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 	[h, w, d] = size(im);
 
     if ((x - 1) <= 1) || ((x + 1) >= w) || ((y - 1) <= 1) || ((y + 1) >= h)
-		return;
+		STOP=1;
+        plot(x, y, 'gd');
+        return;
     end
 
     if check_color(x,y);
+        cordX=x;
+        cordY=y;
 		return;
 	end
 
 	if check_color(x, (y + 1))
+        cordX=x;
+        cordY=y+1;
 		return;
 	end
 	if check_color((x + 1), (y + 1))
+        cordX=x+1;
+        cordY=y+1;
 		return;
 	end
 	if check_color((x + 1), (y - 1))
+        cordX=x+1;
+        cordY=y-1;
 		return;
 	end
 	if check_color((x - 1), (y - 1))
+        cordX=x-1;
+        cordY=y-1;
 		return;
 	end
 	if check_color((x - 1), (y + 1))
+        cordX=x-1;
+        cordY=y+1;
 		return;
 	end
 	if check_color(x, (y - 1))
+        cordX=x;
+        cordY=y-1;
 		return;
 	end
 	if check_color((x - 1), y)
+        cordX=x-1;
+        cordY=y;
 		return;
 	end
 	if check_color((x + 1), y)
+        cordX=x+1;
+        cordY=y;
 		return;
 	end
 
-			disp(spot)
+			%disp(spot)
 	switch spot
 		case 'l'
 			plot((x+3), y, 'md');
