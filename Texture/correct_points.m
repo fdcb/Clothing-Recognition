@@ -7,7 +7,8 @@ function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY, local)
 			return;
 		end
 	end
-
+	disp(spot)
+	disp(local)
 	if strcmp(spot, 'd') || strcmp(spot, 'u')
 		if strcmp(local, 'br') || strcmp(local, 'tr')
 			if (oldX - 3) > 0
