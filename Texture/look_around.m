@@ -7,15 +7,33 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 		return;
 	end
 
-	check_color(x, y);
-	check_color(x, (y + 1));
-	check_color((x + 1), (y + 1));
-	check_color((x + 1), (y - 1));
-	check_color((x - 1), (y - 1));
-	check_color((x - 1), (y + 1));
-	check_color(x, (y - 1));
-	check_color((x - 1), y);
-	check_color((x + 1), y);
+	if check_color(x, y)
+		return;
+	end
+	if check_color(x, (y + 1))
+		return;
+	end
+	if check_color((x + 1), (y + 1))
+		return;
+	end
+	if check_color((x + 1), (y - 1))
+		return;
+	end
+	if check_color((x - 1), (y - 1))
+		return;
+	end
+	if check_color((x - 1), (y + 1))
+		return;
+	end
+	if check_color(x, (y - 1))
+		return;
+	end
+	if check_color((x - 1), y)
+		return;
+	end
+	if check_color((x + 1), y)
+		return;
+	end
 
 	switch spot
 		case 'l'
@@ -36,10 +54,11 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 			end
 	end
 
-	function check_color(curX, curY)
+	function b = check_color(curX, curY)
 		color = im(curY, curX, :);
 		if color(1) >= 15 || color(2) >= 15 || color(3) >= 15
-			return;
+			b = true;
 		end
+		b = false;
 	end
 end
