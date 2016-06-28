@@ -1,14 +1,12 @@
 function [ x, y ] = correct_points(x, y, im, spot, oldX, oldY, local)
 	[h, w, d] = size(im);
-	color = im(y, x, :);
-
-	if color(1) >= 25 || color(2) >= 25 || color(3) >= 25
-		if (x > 1) && (x < w) && (y > 1) && (y < h)
+	if (x > 1) && (x < w) && (y > 1) && (y < h)
+		color = im(y, x, :);
+		if color(1) >= 25 || color(2) >= 25 || color(3) >= 25
 			return;
 		end
 	end
-	disp(spot)
-	disp(local)
+
 	if strcmp(spot, 'd') || strcmp(spot, 'u')
 		if strcmp(local, 'br') || strcmp(local, 'tr')
 			if (oldX - 3) > 0
