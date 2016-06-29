@@ -5,6 +5,14 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 		cordY = y;
 		return;
 	end
+%nao esquecer ver se a cor do proprio é nice ou nao..
+
+	color = im(y ,x, :);
+	if sum(color) > 50
+		cordX = x;
+		cordY = y;
+		return;
+	end
 
 	switch spot
 		case 'l'
