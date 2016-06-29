@@ -1,79 +1,49 @@
 function [ cordX, cordY ] = look_around(x, y, im, spot)
-	cordX = x;
-	cordY = y;
 	[h, w, d] = size(im);
-
-	if x > w || x < 1 || y > h || y < 1
+	if x <= 1 || x >= w || y <= 1 || y >= h
 		cordX = x;
 		cordY = y;
-        return;
-    end
-
-    if check_color(x,y);
 		return;
 	end
 
-	if check_color(x, (y + 1))
-		return;
-	end
-	if check_color((x + 1), (y + 1))
-		return;
-	end
-	if check_color((x + 1), (y - 1))
-		return;
-	end
-	if check_color((x - 1), (y - 1))
-		return;
-	end
-	if check_color((x - 1), (y + 1))
-		return;
-	end
-	if check_color(x, (y - 1))
-		return;
-	end
-	if check_color((x - 1), y)
-		return;
-	end
-	if check_color((x + 1), y)
-		return;
-	end
-
-			%disp(spot)
 	switch spot
 		case 'l'
-			plot((x+3), y, 'md');
-			if (x + 3) < w
-				[cordX, cordY] = look_around((x + 3), y, im, spot);
+			line_points = im(y, x : end);
+			if sum(line_points) < 500
+				local = locate_points(x, y, im);
+				if strcmp(local, 'br') || strcmp(local, 'bl')
+					[cordX, cordY] = look_around(x, (y - 1), im, spot);
+				else
+					[cordX, cordY] = look_around(x, (y + 1), im, spot);
+				end
+			else
+				cordY = y;
+				index = find(line_points > 25);
+				cordX = (x - 1) + indices(1);
 			end
 		case 'r'
-			plot((x-3), y, 'md');
-			if (x - 3) > 0
-				[cordX, cordY] = look_around((x - 3), y, im, spot);
-			end
-		case 'u'
-			plot(x, (y + 3), 'md');
-			if (y + 3) < h
-				[cordX, cordY] = look_around(x, (y + 3), im, spot);
+			if sum(im(y, 1 : x) < 500
+				local = locate_points(x, y, im);
+				if strcmp(local, 'br') || strcmp(local, 'bl')
+					[cordX, cordY] = look_around(x, (y - 1), im, spot);
+				else
+					[cordX, cordY] = look_around(x, (y + 1), im, spot);
+				end
 			end
 		case 'd'
-			plot(x, (y - 3), 'md');
-			if (y - 3) > 0
-				[cordX, cordY] = look_around(x, (y - 3), im, spot);
+			if sum(im(0 : y, x)) < 500
+				local = locate_points(x, y, im);
+				if strcmp(local, 'br') || strcmp(local, 'tr')
+					[cordX, cordY] = look_around((x - 1), y, im, spot);
+				else
+					[cordX, cordY] = look_around((x + 1), y, im, spot);
 			end
-	end
-
-	function b = check_color(curX, curY)
-		if curX > w || curX < 1 || curY > h || curY < 1
-			b = false;
-			return;
-		end
-		color = im(curY, curX, :);
-		if color(1) >= 25 || color(2) >= 25 || color(3) >= 25
-			b = true;
-			cordX = curX;
-			cordY = curY;
-			return;
-		end
-		b = false;
-	end
+		case 'u'
+			if sum(im(y : end, x)) < 500
+				local = locate_points(x, y, im);
+				if strcmp(local, 'br') || strcmp(local, 'tr')
+					[cordX, cordY] = look_around((x - 1), y, im, spot);
+				else
+					[cordX, cordY] = look_around((x + 1), y, im, spot);
+			end
 end
