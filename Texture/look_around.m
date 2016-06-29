@@ -32,8 +32,13 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 				end
 			else
 				cordY = y;
+				red = im(y, 1 : x, 1);
+				green = im(y, 1 : x, 2);
+				blue = im(y, 1 : x, 3);
+				line_points = red + green + blue;
+				line_points = fliplr(line_points);
 				index = find(line_points > 25, 1);
-				cordX = index;
+				cordX = x - index;
 			end
 		case 'd'
 			line_points = im(1 : y, x);
@@ -46,8 +51,13 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 				end
 			else
 				cordX = x;
+				red = im(1 : y, x, 1);
+				green = im(1 : y, x, 2);
+				blue = im(1 : y, x, 3);
+				line_points = red + green + blue;
+				line_points = fliplr(line_points);
 				index = find(line_points > 25, 1);
-				cordY = index;
+				cordY = y - index;
 			end
 		case 'u'
 			line_points = im(y : end, x);
