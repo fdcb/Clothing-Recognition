@@ -1,5 +1,5 @@
-function [ cordX, cordY ] = look_around(x, y, im, spot)
-	[h, w, d] = size(im);
+function [ cordX, cordY ] = look_around(x, y, im, spot, outermost)
+	[h, w, d] = size(im, outermost);
 	if x <= 1 || x >= w || y <= 1 || y >= h
 		cordX = x;
 		cordY = y;
@@ -8,7 +8,7 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 %nao esquecer ver se a cor do proprio é nice ou nao..
 
 	color = im(y ,x, :);
-	if sum(color) > 50
+	if color(1) > 15 || color(2) > 15 || color(3) > 15
 		cordX = x;
 		cordY = y;
 		return;
@@ -18,11 +18,13 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 		case 'l'
 			line_points = im(y, x : end);
 			if sum(line_points) < 500
-				local = locate_points(x, y, im);
+				local = locate_points(x, y, outermost);
 				if strcmp(local, 'br') || strcmp(local, 'bl')
-					[cordX, cordY] = look_around(x, (y - 1), im, spot);
+					[cordX, cordY] = look_around(x, (y - 1), im, ...
+							spot, outermost);
 				else
-					[cordX, cordY] = look_around(x, (y + 1), im, spot);
+					[cordX, cordY] = look_around(x, (y + 1), im, ...
+							spot, outermost);
 				end
 			else
 				cordY = y;
@@ -32,11 +34,13 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 		case 'r'
 			line_points = im(y, 1 : x);
 			if sum(line_points) < 500
-				local = locate_points(x, y, im);
+				local = locate_points(x, y, im, outermost);
 				if strcmp(local, 'br') || strcmp(local, 'bl')
-					[cordX, cordY] = look_around(x, (y - 1), im, spot);
+					[cordX, cordY] = look_around(x, (y - 1), im, ...
+							spot, outermost);
 				else
-					[cordX, cordY] = look_around(x, (y + 1), im, spot);
+					[cordX, cordY] = look_around(x, (y + 1), im, ...
+							spot, outermost);
 				end
 			else
 				cordY = y;
@@ -51,11 +55,13 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 		case 'd'
 			line_points = im(1 : y, x);
 			if sum(line_points) < 500
-				local = locate_points(x, y, im);
+				local = locate_points(x, y, im, outermost);
 				if strcmp(local, 'br') || strcmp(local, 'tr')
-					[cordX, cordY] = look_around((x - 1), y, im, spot);
+					[cordX, cordY] = look_around((x - 1), y, im, ...
+							spot, outermost);
 				else
-					[cordX, cordY] = look_around((x + 1), y, im, spot);
+					[cordX, cordY] = look_around((x + 1), y, im, ...
+							spot, outermost);
 				end
 			else
 				cordX = x;
@@ -70,11 +76,13 @@ function [ cordX, cordY ] = look_around(x, y, im, spot)
 		case 'u'
 			line_points = im(y : end, x);
 			if sum(line_points) < 500
-				local = locate_points(x, y, im);
+				local = locate_points(x, y, im, outermost);
 				if strcmp(local, 'br') || strcmp(local, 'tr')
-					[cordX, cordY] = look_around((x - 1), y, im, spot);
+					[cordX, cordY] = look_around((x - 1), y, im, ...
+							spot, outermost);
 				else
-					[cordX, cordY] = look_around((x + 1), y, im, spot);
+					[cordX, cordY] = look_around((x + 1), y, im, ...
+							spot, outermost);
 				end
 			else
 				cordX = x;
