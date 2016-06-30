@@ -34,14 +34,21 @@ function [ polygon, x, y ] =  showboxes(im, boxes, partcolor, partidentifier)
 				end
 			end
 		end
-        
+
+		[h, w, d] = size(im);
         idx = find(x > 0);
         x = x(idx);
         y = y(idx);
         idx = find(y > 0);
         y = y(idx);
         x = x(idx);
-        
+        idx = find(x < w);
+        x = x(idx);
+        y = y(idx);
+        idx = find(y < h);
+        y = y(idx);
+        x = x(idx);
+
 		hold on;
 		plot(x , y, 'yo');
 		[x, y] = select_points(x, y, im);

@@ -8,7 +8,7 @@ function [ x, y ] = select_points(x, y, im)
 		spot = char(points(i, 3));
 		index = cell2mat(points(i, 4));
         plot(cordX, cordY, 'rs');
-		local = locate_points(x, y, points);
+		local = locate_points(cordX, cordY, points);
 		[newX, newY] = look_around(cordX, cordY, im, spot, local);
 		if newX ~= cordX || newY ~= cordY
 			x(index) = newX;
