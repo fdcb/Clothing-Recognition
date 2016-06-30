@@ -33,12 +33,9 @@ load('PARSE_model');
 		'r', 'y', 'c', 'c', 'c', 'c', 'y', 'y', 'y', 'b', 'b', 'b', 'b'};
 numparts = length(colorset);
 
-for i = 17 : length(imageList)
+for i = 96 : length(imageList)
 	for j = 4 : length(bodyParts)
-%i = 400;
-%j = 1;
-i
-im = imread(strcat(curDir, imageList(i).name));
+        im = imread(strcat(curDir, imageList(i).name));
 		boxes = detect_fast(im, model, min(model.thresh, -1));
 		boxes = nms(boxes, .1);
 		if size(boxes) ~= 0
@@ -46,8 +43,7 @@ im = imread(strcat(curDir, imageList(i).name));
 			axis image;
 			axis off;
 			[k, x, y] = showboxes(im, boxes(1, :), colorset, bodyParts{j});
-			% [k, x, y] = showboxes(im, boxes(1, :), colorset, 'r');
-
+			
 			[axisx, axisy, z] = size(im);
 			mask = poly2mask(x(k), y(k), axisx, axisy);
 			red = im(:, :, 1);

@@ -1,16 +1,16 @@
 function [ location ] = locate_points(x, y, outermost)
 
 	for i = 1 : length(outermost)
-		spot = char(points(i, 3));
+		spot = char(outermost(i, 3));
 		switch spot
 			case 'l'
-				lx = round(cell2float(points(i, 1)));
+				lx = round(cell2float(outermost(i, 1)));
 			case 'r'
-				rx = round(cell2float(points(i, 1)));
+				rx = round(cell2float(outermost(i, 1)));
 			case 'd'
-				dy = round(cell2float(points(i, 2)));
+				dy = round(cell2float(outermost(i, 2)));
 			case 'u'
-				uy = round(cell2float(points(i, 2)));
+				uy = round(cell2float(outermost(i, 2)));
 		end
 	end
 
