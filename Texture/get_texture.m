@@ -60,49 +60,52 @@ for i = 1 : length(imageList)
 			% red = red(mask);
 			% green = green(mask);
 			% blue = blue(mask);
-			cd('mpeg7fex_win32_v2');
-
-			switch bodyParts{j}
-				case 'y'
-					cd('Body/Texture');
-				case 'm'
-					cd('RightArm/Texture');
-				case 'r'
-					cd('RightLeg/Texture');
-				case 'b'
-					cd('LeftLeg/Texture');
-				case 'c'
-					cd('LeftArm/Texture');
-			end
-
 			points = find_outermostPoints(x, y);
-
-			for i = 1 : length(points)
-				spot = char(points(i, 3));
+            
+			for a = 1 : length(points)
+				spot = char(points(a, 3));
 				switch spot
 					case 'l'
-						lx = round(cell2float(points(i, 1)));
+						lx = round(cell2float(points(a, 1)));
 					case 'r'
-						rx = round(cell2float(points(i, 1)));
+						rx = round(cell2float(points(a, 1)));
 					case 'd'
-						dy = round(cell2float(points(i, 2)));
+						dy = round(cell2float(points(a, 2)));
 					case 'u'
-						uy = round(cell2float(points(i, 2)));
+						uy = round(cell2float(points(a, 2)));
 				end
-			end
+            end
+            
 			h = dy - uy;
 			w = rx - lx;
 			newimage = cat(3, red, green, blue);
 			newimage = imcrop(newimage, [lx uy w h]);
 			newimage = imresize(newimage, [128 128]);
 
-			imwrite(newimage, imageList(i).name);
+            if ~(isempty(newimage))
+                cd('mpeg7fex_win32_v2');
 
-			f = fopen('temp.txt', 'a');
-			fprintf(f, '%s\n', imageList(i).name);
-			fclose(f);
+                switch bodyParts{j}
+                    case 'y'
+                        cd('Body/Texture');
+                    case 'm'
+                        cd('RightArm/Texture');
+                    case 'r'
+                        cd('RightLeg/Texture');
+                    case 'b'
+                        cd('LeftLeg/Texture');
+                    case 'c'
+                        cd('LeftArm/Texture');
+                end
 
-			cd('../../..');
+                imwrite(newimage, imageList(i).name);
+
+                f = fopen('temp.txt', 'a');
+                fprintf(f, '%s\n', imageList(i).name);
+                fclose(f);
+                cd('../../..');
+            end
+			
 		end
 	end
 end
