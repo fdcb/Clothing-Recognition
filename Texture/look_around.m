@@ -16,7 +16,7 @@ function [ cordX, cordY ] = look_around(x, y, im, spot, local)
 	switch spot
 		case 'l'
 			line_points = im(y, x : end);
-			if sum(line_points) < 500
+			if sum(line_points) < 600
 				if strcmp(local, 'br') || strcmp(local, 'bl')
 					[cordX, cordY] = look_around(x, (y - 1), im, ...
 							spot, local);
@@ -31,7 +31,7 @@ function [ cordX, cordY ] = look_around(x, y, im, spot, local)
 			end
 		case 'r'
 			line_points = im(y, 1 : x);
-			if sum(line_points) < 500
+			if sum(line_points) < 600
 				if strcmp(local, 'br') || strcmp(local, 'bl')
 					[cordX, cordY] = look_around(x, (y - 1), im, ...
 							spot, local);
@@ -51,7 +51,7 @@ function [ cordX, cordY ] = look_around(x, y, im, spot, local)
 			end
 		case 'd'
 			line_points = im(1 : y, x);
-			if sum(line_points) < 500
+			if sum(line_points) < 600
 				if strcmp(local, 'br') || strcmp(local, 'tr')
 					[cordX, cordY] = look_around((x - 1), y, im, ...
 							spot, local);
@@ -71,7 +71,7 @@ function [ cordX, cordY ] = look_around(x, y, im, spot, local)
 			end
 		case 'u'
 			line_points = im(y : end, x);
-			if sum(line_points) < 500
+			if sum(line_points) < 600
 				if strcmp(local, 'br') || strcmp(local, 'tr')
 					[cordX, cordY] = look_around((x - 1), y, im, ...
 							spot, local);
