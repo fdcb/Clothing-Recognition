@@ -43,9 +43,9 @@ function [color_texture] =  create_tables(color, texture)
         end
         i
 		new_color(i, :) = row;
-        
+
     end
-    
+
     texture(isnan(texture)) = 0;
     color_texture = cat(2, new_color, texture);
 end
